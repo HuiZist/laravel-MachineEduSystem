@@ -1,23 +1,6 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .lesson-create .container{
-            margin:50px auto;
-        }
-        .lesson-create .panel-body .btn:hover{
-            color:#9c9987;
-            background: #3a5775;
-        }
-        .lesson-create .btn{
-            margin:auto;
-            width:50%;
-            background: #bdcbda;
-            color:#a27878;
-        }
-        .lesson-create .btn:hover{
-            background: #304356;
-            color:#fff;
-        }
     </style>
 @endsection
 @section('content')

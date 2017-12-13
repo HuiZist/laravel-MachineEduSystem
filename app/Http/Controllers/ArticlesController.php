@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Topic;
 use App\Http\Requests\StoreArticleRequest;
 use App\Repositories\ArticleRepository;
 use Illuminate\Http\Request;
@@ -24,7 +25,14 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = $this->articleRepository->getArticleFeed();
-        return view('articles.index',compact('articles'));
+        $pattern="/<[img|IMG].*?src=[\'\"](.*?[\.gif|\.jpg|\.png|\.jpeg])[\'|\"].*?[\/]?>/"; 
+        foreach($articles as $article){
+            preg_match_all( $pattern, $article->body,$img,PREG_OFFSET_CAPTURE );
+            $article->img = $img[0]?$img[1][0][0]:'';
+            $article->body = mb_substr(strip_tags($article->body),0,300).'...';
+        }
+        $topics = Topic::orderBy('articles_count','desc')->latest('articles_count')->take(10)->get();
+        return view('articles.index',compact('articles','topics'));
     }
 
     /**

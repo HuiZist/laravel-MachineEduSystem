@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .lesson-index .container .lesson-list{
-            padding:10px 0;
-        }
-        .lesson-index .list-group-item{
-            background: #eee;
-        }
-        .lesson-index .list-group-item > a{
-            color:#333;
-            font-size:20px;
-        }
     </style>
 @endsection
 @section('content')
@@ -24,12 +14,14 @@
             <p>{{ $lessonsortInfo->abstract }}</p>
         </div>
         <div class="container">
+            @if(Auth::check() && Auth::user()->is_admin)
             <div class="btn-group">
                 <a class="btn" href="{{ route('lesson.create',['lessonsortId'=>$lessonsortInfo->id]) }}"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&ensp;新建课程</a>
             </div>
+            @endif
             <div class="lesson-list">
                 <ul class="list-group">
-                    @foreach($lessonsortInfo->lesson as $lesson)
+                    @foreach($lessons as $lesson)
                         <li class="list-group-item">
                             <a href="{{ route('lesson.show',['$lessonId'=>$lesson->id]) }}">
                                 {{ $lesson->title }}
@@ -37,6 +29,9 @@
                         </li>
                     @endforeach
                 </ul>
+                <div class="page">
+                    {{ $lessons->links() }}
+                </div>
             </div>
         </div>
     </div>

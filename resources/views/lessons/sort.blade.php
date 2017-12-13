@@ -1,41 +1,8 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .lessons-sort .btn-group{
-            margin: 10px 32px;
-        }
-        .lessons-sort .thumbnailcell{
-            float:left;
-            padding:10px 32px;
-        }
-        .lessons-sort .thumbnail{
-            width:219px;
-            padding:0;
-            border-radius: 4px;
-            background: #eee;
-            border:none;
-            box-shadow: 10px 10px 5px #888888;
-        }
-        .lessons-sort .thumbimg{
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            width:219px;
-            height:162px;
-        }
-        .lessons-sort .thumbimg > a{
-            display: block;
-            width:100%;
-            height:100%;
-        }
-        .lessons-sort .caption > a{
-            color:#304256;
-            text-decoration: none;
-        }
-        .lessons-sort .caption > a:hover{
-            color:#999;
-        }
-        .lessons-sort .caption > h3{
-            color:#000;
+        .lessons-sort .sort-list .thumbnail{
+            overflow: hidden;
         }
     </style>
 @endsection
@@ -87,6 +54,7 @@
                 </a>
             </div>
             <div class="sort-list">
+            @if(Auth::check() && Auth::user()->is_admin)
                 <div class="btn-group">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
@@ -126,7 +94,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
+                @endif
+                <div>
                     @foreach( $lesson_sorts as $lesson_sort )
                         <div class="thumbnailcell">
                             <div class="thumbnail">
@@ -144,6 +113,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="page">
+                    {{ $lesson_sorts->links() }}
                 </div>
             </div>
         </div>

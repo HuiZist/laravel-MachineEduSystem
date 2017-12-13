@@ -14,11 +14,12 @@ class LessonController extends Controller
 {
     //
     public function sortIndex(){
-        $lesson_sorts = LessonsSort::latest('updated_at')->with('user')->get();
+        $lesson_sorts = LessonsSort::latest('updated_at')->with('user')->paginate(8);
         return view('lessons.sort',compact('lesson_sorts'));
     }
 
     public function sortStore(StoreLessonSortRequest $request){
+        $this->authorize('create',LessonsSort::class);
         $data = [
             'name' => $request->get('name'),
             'thumbnail' => $this->thumbnail($request),
@@ -41,8 +42,9 @@ class LessonController extends Controller
     }
 
     public function index($lessonsortId){
-        $lessonsortInfo = LessonsSort::where('id',$lessonsortId)->with('user','lesson')->first();
-        return view('lessons.index',compact('lessonsortInfo'));
+        $lessons = Lesson::where('lessons_sort_id',$lessonsortId)->paginate(10);
+        $lessonsortInfo = LessonsSort::where('id',$lessonsortId)->with('user')->first();
+        return view('lessons.index',compact('lessons','lessonsortInfo'));
     }
 
     public function create($lessonsortId){
@@ -50,6 +52,7 @@ class LessonController extends Controller
     }
 
     public function store(StoreLessonRequest $request,$lessonsortId){
+        $this->authorize('create',Lesson::class);
         $data = [
             'title' => $request->get('title'),
             'body' => $request->get('body'),
@@ -58,6 +61,7 @@ class LessonController extends Controller
         ];
         Lesson::create($data);
         return redirect()->route('lessonsort');
+        
     }
 
     public function show($lessonId)

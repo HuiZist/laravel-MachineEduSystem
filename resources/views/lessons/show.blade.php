@@ -1,34 +1,6 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .lesson-show .container{
-            width:800px;
-        }
-        .lesson-show .lesson-body{
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 10px;
-        }
-        .lesson-show .work .btn-my{
-            background: #bdcbda;
-            color:#a27878;
-        }
-        .lesson-show .work .btn-my:hover{
-            background: #304356;
-            color:#fff;
-        }
-        .lesson-show .work .btn-my:focus{
-            outline:none;
-        }
-        .lesson-show .work .work-form{
-            margin-top: 10px;
-        }
-        .lesson-show .form-foot{
-            text-align: center;
-        }
-        .lesson-show .form-foot .btn-my{
-            margin:10px auto;
-            width:50%;
-        }
     </style>
 @endsection
 @section('content')

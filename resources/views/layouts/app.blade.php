@@ -16,7 +16,57 @@
     @yield('css')
     <style>
         body{
-            overflow-y: scroll;
+          padding-top: 50px;
+          overflow-y: scroll;
+        }
+
+        #content .jumbotron{
+          text-align: center;
+          padding:22px;
+          margin-bottom:10px;
+        }
+
+        .btn-group .btn{
+          background: #eee;
+          color:#636b6f;
+        }
+
+        .btn-group .btn:hover{
+          background: #636b6f;
+          color:#fff;
+        }
+
+        .page{
+          text-align: center;
+          clear: both;
+        }
+        .page .pagination{
+          border: none;
+          font-size: 20px;
+        }
+        .page .pagination li span{
+          background:#ccc;
+          color:#fff;
+          border: none;
+        }
+        .page .pagination li span:hover{
+          background:#ccc;
+          color:#fff;
+        }
+        .page .pagination li a{
+          color: #fff;
+          border: none;
+          background:#ccc;
+        }
+        .page .pagination li a:hover{
+          background: #333;
+          color: #fff;
+        }
+        .page .pagination .active span{
+          background: #333;
+        }
+        .page .pagination .active span:hover{
+          background: #333;
         }
         #content{
             min-height:784px;
@@ -65,6 +115,10 @@
         .qq-code img{
             width:135px;
             height:185px;
+        }
+        .modal-open {
+            overflow: auto !important;
+            padding-right: 0px !important;
         }
     </style>
 </head>

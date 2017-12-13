@@ -46,6 +46,8 @@ class UsersController extends Controller
     //修改用户信息
     public function setchange(Request $request)
     {
+        $user = User::where('id',$request->get('userId'))->first();
+        $this->authorize('update', $user);
         $data = [
             'user_id'=>Auth::id(),
             'blog'=>$request->get('blog'),

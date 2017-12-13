@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="max-width: 1903px;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" style="padding-left: 10%;">
+        <div class="navbar-header" style="padding-left: 5%;">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -16,12 +16,11 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left:35%;padding-right:10%;">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-left:25%;padding-right:5%;">
 
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/') }}">首页</a></li>
                 <li><a href="{{ url('lessonsort') }}">课程</a></li>
-                <li><a href="{{ url('articles') }}">文章</a></li>
                 <li><a href="{{ url('examine') }}">考核</a></li>
             </ul>
 
@@ -40,7 +39,7 @@
                     <li><a href="{{ route('register') }}">注册</a></li>
                 @else
                     <li class="dropdown">
-                        <a style="width:127px;" href="{{ url('home') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a style="min-width:127px;" href="{{ url('home') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&ensp;
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>

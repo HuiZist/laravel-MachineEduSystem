@@ -36,7 +36,7 @@ class ArticleRepository
     public function getArticleFeed()
     {
         //scopePublished,按updated_at降序排列,带user表数据
-        return Article::published()->orderBy('is_first','desc')->latest('updated_at')->with('user')->paginate(5);
+        return Article::published()->orderBy('is_first','desc')->latest('updated_at')->with('user','topics')->paginate(10);
     }
 
     //当Topic存在时获取topic_id，当Topic不存在时创建该Topic并获取topic_id

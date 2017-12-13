@@ -1,22 +1,6 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .articles-create .panel{
-            width:850px;
-            margin:20px auto;
-        }
-        .articles-create .panel-heading{
-            background:#304356;
-            color:#fff;
-        }
-        .articles-create .panel-body .btn{
-            color:#fff;
-            background: #304356;
-        }
-        .articles-create .panel-body .btn:hover{
-            color:#9c9987;
-            background: #3a5775;
-        }
     </style>
 @endsection
 @section('content')

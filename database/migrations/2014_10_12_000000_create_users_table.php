@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->integer('followings_count')->default(0);
             $table->integer('experience_count')->default(0);
             $table->json('setting')->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

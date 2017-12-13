@@ -1,43 +1,6 @@
 @extends('layouts.app')
 @section('css')
     <style>
-        .article-content{
-            width:800px;
-            float:left;
-        }
-        .article-title{
-            font-size:20px;
-            font-weight: bold;
-        }
-        .article-topic{
-            padding-top: 10px;
-        }
-        .article-author{
-            float:left;
-            width:250px;
-            margin:0 10px;
-        }
-        .article-author .panel .media{
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-        .article-comment{
-            width: 800px;
-            clear: both;
-        }
-        .article-comment .panel-body .media{
-            padding-bottom: 10px;
-            border-bottom:1px solid #d9e0e2;
-        }
-        .article-comment .comment-body{
-            padding:5px 10px;
-        }
-        .article-comment .panel-body .media .btn{
-            padding:2px 5px;
-        }
-        .article-comment .panel-body .media .button{
-            margin-left: 20px;
-        }
     </style>
 @endsection
 @section('content')

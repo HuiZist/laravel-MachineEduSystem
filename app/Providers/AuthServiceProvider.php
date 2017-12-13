@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        \App\User::class => \App\Policies\UserPolicy::class,
+        \App\Lesson::class => \App\Policies\LessonPolicy::class,
+        \App\LessonsSort::class => \App\Policies\LessonsSortPolicy::class,
     ];
 
     /**
@@ -26,5 +29,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        /*Gate::define('create', function ($user) {
+            return true;
+        });*/
     }
 }

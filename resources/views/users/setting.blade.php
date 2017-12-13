@@ -41,6 +41,7 @@
             {!! csrf_field() !!}
             <ul class="list-group SetContent">
                 <li class="list-group-item title">个人信息</li>
+                <input type="hidden" id="userId" name="userId" value="{{ $user->id }}">
                 <li class="list-group-item"><label>账号邮箱:&emsp;</label>{{ $user->email }}</li>
                 <li class="list-group-item"><label for="name">账号名称:&emsp;</label>
                     <input type="text" id="name" name="name" class="form-control"

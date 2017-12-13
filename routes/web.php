@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', 'PostController@index')->name('welcome');
+Route::get('/', 'ArticlesController@index')->name('welcome');
+
+//文章
+Route::resource('articles','ArticlesController',['names'=>[
+	'create'=>'articles.create',
+    'show'=>'articles.show'
+]]);
 
 Auth::routes();
 
@@ -22,12 +28,6 @@ Route::get('/home/comments', 'HomeController@comments')->name('home.comments');
 
 //邮件的验证
 Route::get('/email/verify/{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
-
-//文章
-Route::resource('articles','ArticlesController',['names'=>[
-	'create'=>'articles.create',
-    'show'=>'articles.show'
-]]);
 
 Route::post('articles/{articleId}/answer','AnswersController@store');//创建问题的答案
 
@@ -51,5 +51,6 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/{lessonsortId}/lesson/create','LessonController@create')->name('lesson.create');
     Route::post('/{lessonsortId}/lesson/store','LessonController@store');
     Route::post('/{lessonId}/work/store','WorkController@store')->name('work.store');
-    Route::post('/post/store','PostController@store')->name('post.store');
 });
+
+Route::get('/topic/{topicId}','TopicsController@show')->name('topics.Show');

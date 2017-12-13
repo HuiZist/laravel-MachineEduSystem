@@ -1,0 +1,91 @@
+.lesson-create .container{
+    margin:50px auto;
+}
+.lesson-create .panel-body .btn:hover{
+    color:#9c9987;
+    background: #3a5775;
+}
+.lesson-create .btn{
+    margin:auto;
+    width:50%;
+    background: #bdcbda;
+    color:#a27878;
+}
+.lesson-create .btn:hover{
+    background: #304356;
+    color:#fff;
+}
+.lesson-index .container .lesson-list{
+    padding:10px 0;
+}
+.lesson-index .list-group-item{
+    background: #eee;
+}
+.lesson-index .list-group-item > a{
+    color:#333;
+    font-size:20px;
+}
+.lesson-show .container{
+    width:800px;
+}
+.lesson-show .lesson-body{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.lesson-show .work .btn-my{
+    background: #bdcbda;
+    color:#a27878;
+}
+.lesson-show .work .btn-my:hover{
+    background: #304356;
+    color:#fff;
+}
+.lesson-show .work .btn-my:focus{
+    outline:none;
+}
+.lesson-show .work .work-form{
+    margin-top: 10px;
+}
+.lesson-show .form-foot{
+    text-align: center;
+}
+.lesson-show .form-foot .btn-my{
+    margin:10px auto;
+    width:50%;
+}
+.lessons-sort .btn-group{
+    margin: 10px 32px;
+}
+.lessons-sort .thumbnailcell{
+    float:left;
+    padding:10px 32px;
+}
+.lessons-sort .thumbnail{
+    width:219px;
+    padding:0;
+    border-radius: 4px;
+    background: #eee;
+    border:none;
+    box-shadow: 10px 10px 5px #888888;
+}
+.lessons-sort .thumbimg{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width:219px;
+    height:162px;
+}
+.lessons-sort .thumbimg > a{
+    display: block;
+    width:100%;
+    height:100%;
+}
+.lessons-sort .caption > a{
+    color:#304256;
+    text-decoration: none;
+}
+.lessons-sort .caption > a:hover{
+    color:#999;
+}
+.lessons-sort .caption > h3{
+    color:#000;
+}
