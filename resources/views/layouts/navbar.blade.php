@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}" style="color: #fff;text-shadow: #fff 5px 3px 3px;">
-                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                <i class="fa fa-legal" aria-hidden="true"></i>
                 <span style="font-family: 华文行楷;">&ensp;{{ config('app.name', 'Laravel') }}</span>
             </a>
         </div>

@@ -53,4 +53,4 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/{lessonId}/work/store','WorkController@store')->name('work.store');
 });
 
-Route::get('/topic/{topicId}','TopicsController@show')->name('topics.Show');
+Route::get('/topic/{topicId}','TopicsController@show');

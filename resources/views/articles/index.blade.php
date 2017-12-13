@@ -34,9 +34,14 @@
     overflow: hidden;
     padding:15px;
 }
+.articles-index .articles-list .articleCom>p{
+    margin:0;
+    clear:both;
+}
 .articles-index .articles-list .articleUser a{
     color:#333;
     text-decoration: none;
+    line-height: 32px;
 }
 .articles-index .articles-list .articleUser a:hover{
     color:#666;
@@ -123,11 +128,11 @@
                                     <img class="media-object" width="36" src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
                                 </div>
                                 <div class="media-body">
-                                    <h3 class="media-heading">
+                                    <h4 class="media-heading">
                                         <a href="/articles/{{ $article->id }}">
                                             {{ $article->user->name }}
                                         </a>
-                                    </h3>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -149,6 +154,13 @@
                             @endif
                             <a href="/articles/{{ $article->id }}">{{ $article->body }}</a>
                         </div>
+                        <p>
+                        @if($article->created_at==$article->updated_at)
+                            发布于：{{ $article->created_at }}
+                        @else
+                            更新于：{{ $article->updated_at }}
+                        @endif
+                        </p>
                     </div>
                 @endforeach
                 <div class="page">

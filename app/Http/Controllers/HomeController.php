@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function articles()
     {
-        $articles = Auth::user()->articles;
+        $articles = Auth::user()->articles()->latest('updated_at')->paginate(10);
         $user = $this->getUser();
         $userinfo = $this->getUserInfo();
 
@@ -39,9 +39,12 @@ class HomeController extends Controller
 
     public function answers()
     {
-        $answers = Auth::user()->answers;
+        $answers = Auth::user()->answers()->with('article')->latest('updated_at')->paginate(10);
         $user = $this->getUser();
         $userinfo = $this->getUserInfo();
+        foreach($answers as $answer){
+            $answer->body = strip_tags($answer->body);
+        }
 
         return view('home.answers',compact('user','userinfo','answers'));
     }
@@ -50,7 +53,10 @@ class HomeController extends Controller
     {
         $user = $this->getUser();
         $UserId = $user->id;
-        $comments = Comment::where('user_id',$UserId)->with('answer')->get();
+        $comments = Comment::where('user_id',$UserId)->with('answer')->latest('updated_at')->paginate(10);
+        foreach($comments as $comment){
+            $comment->body = strip_tags($comment->body);
+        }
 
         $userinfo = $this->getUserInfo();
 

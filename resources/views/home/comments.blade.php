@@ -1,73 +1,51 @@
 @extends('layouts.app')
 @section('css')
-    <style>
+<style>
         .UserInfo{
             margin-top:-170px;
             margin-bottom: 30px;
+            overflow: hidden;
         }
         .UserInfoLeft{
-            position:absolute;
+            float: left;
         }
         .UserAvatar{
             width:192px;
             border-radius: 96px;
         }
         .UserInfoMiddle{
-            display: inline-block;
-            margin-left:235px;
+            float: left;
+            margin-left:30px;
             padding-top: 20px;
         }
         .UserInfoMiddle ul li{
             line-height:45px;
         }
-        .UserInfoMiddle li a{
-            color:#304356;
-            font-size: 16px;
+        .UserInfoMiddle li,.UserInfoMiddle li>a{
+            color:#000;
+            font-size: 18px;
+        }
+        .UserInfoMiddle li>a:hover{
+            color: #666;
         }
         .UserInfoRight{
-            display: inline-block;
             float:right;
             font-size: 25px;
             padding-top: 70px;
             color:#000;
         }
-        .UserLink{
-            margin-left:200px;
+        .UserInfoBody .infoItem{
+            float: left;
+            width: 350px;
         }
-        .UserLink>table{
-            width:800px;
+        .UserInfoBody .title{
+            background:#101010;
+            color:#fff;
         }
-        .UserLink td{
-            text-align: center;
-            padding:10px;
-        }
-        .badge{
-            background:#304356;
-        }
-        .UserLink a{
-            color:#304356;
-            text-decoration: none;
-        }
-        .UserLink a:hover{
-            color:#9c9987;
-        }
-        .UserLink a:hover .badge{
-            background: #9c9987;
-        }
-        .UserLink .SelectTd a{
-            color:#9c9987;
-        }
-        .UserLink .SelectTd .badge{
-            background: #9c9987;
-        }
-        .UserContent{
-            margin:50px;
-        }
-        .UserContent .UserComments{
-            border-bottom:1px solid #ddd;
-            font-size: 18px;
-            margin:20px;
-            padding:10px;
+        .UserInfoBody .infoList{
+            margin-left: 20px;
+            float: left;
+            width: 700px;
         }
     </style>
 @endsection
@@ -83,11 +61,11 @@
             <div class="UserInfoMiddle">
                 <ul class="list-unstyled" style="">
                     <li>
-                        <span style="font-size: 24px;font-weight: bold;">{{ $user->name }}</span>
+                        <span style="font-size: 36px;font-weight: bold;">{{ $user->name }}</span>
                         &emsp;/&emsp;
                         <i class="fa fa-home"></i><span> {{ $userinfo->live }}</span></li>
                     <li>
-                        <i class="fa fa-mobile"> {{ $userinfo->phone }}
+                        <i class="fa fa-mobile">&ensp;{{ $userinfo->phone }}
                         </i>
                         &emsp;/&emsp;
                         <i class="fa fa-comment"> {{ $userinfo->webchat }}
@@ -105,27 +83,35 @@
                 </ul>
             </div>
             <div class="UserInfoRight">
-                <i class="fa fa-fire"></i> {{ $user->experience_count }}
+                <i class="fa fa-coffee"></i> {{ $user->experience_count }}
             </div>
         </div>
-        <div class="UserLink">
-            <table>
-                <tr>
-                    <td><a href="{{ route('home') }}">文章&emsp;<span class="badge">{{ $user->articles_count }}</span></a></td>
-                    <td><a href="{{ route('home.answers') }}">评论&emsp;<span class="badge">{{ $user->answers_count }}</span></a></td>
-                    <td class="SelectTd"><a href="{{ route('home.comments') }}">回复&emsp;<span class="badge">{{ $user->comments_count }}</span></a></td>
-                    <td><a href="#">关注&emsp;<span class="badge">{{ $user->followers_count }}</span></a></td>
-                </tr>
-            </table>
-        </div>
-        <div class="UserContent">
-            @foreach($comments as $comment)
-                <div class="UserComments">
-                    {{ $comment->body }}
-                    <p><span>回复:</span>{!! $comment->answer->body !!}</p>
+        <div class="UserInfoBody">
+            <div class="list-group infoItem">
+                <p class="list-group-item title">
+                    选项
+                </p>
+                <a href="{{ route('home') }}" class="list-group-item">文章</a>
+                <a href="{{ route('home.answers') }}" class="list-group-item">评论</a>
+                <a href="{{ route('home.comments') }}" class="list-group-item" style="background: #d3e0e9;">回复</a>
+                <a href="#" class="list-group-item">课程</a>
+            </div>
+            <div class="list-group infoList">
+                <p class="list-group-item title">
+                    列表
+                </p>
+                @foreach($comments as $comment)
+                <a href="/articles/{{ $comment->answer->article_id }}" class="list-group-item">
+                {{ $comment->body }}
+                <p>回复评论：{{ strip_tags($comment->answer->body) }}</p>
+                </a>
+                @endforeach
+                <div class="page">
+                    {{ $comments->links() }}
                 </div>
-            @endforeach
+            </div>
         </div>
+        
     </div>
 </div>
 @endsection

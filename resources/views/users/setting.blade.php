@@ -24,6 +24,16 @@
             border-radius: 15px;
             margin-left:50px;
         }
+        .setting ul>li{
+            text-align: center;
+        }
+        .setting ul>li>label{
+            position:absolute;
+            left:10px;
+        }
+        .setting .SetContent>li>input{
+            width: 300px;
+        }
     </style>
 @endsection
 @section('content')

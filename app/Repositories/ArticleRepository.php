@@ -47,6 +47,11 @@ class ArticleRepository
                 Topic::find($topic)->increment('articles_count');
                 return (int)$topic;
             }
+            $ex = Topic::where('name',$topic)->first();
+            if(!!$ex){
+                Topic::find($ex->id)->increment('articles_count');
+                return $ex->id;
+            }
             $newTopic = Topic::create(['name'=>$topic,'articles_count'=>1]);
             return $newTopic->id;
         })->toArray();
