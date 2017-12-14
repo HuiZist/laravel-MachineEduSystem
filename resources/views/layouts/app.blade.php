@@ -120,6 +120,14 @@
             overflow: auto !important;
             padding-right: 0px !important;
         }
+        @keyframes navup{
+            from {margin-top: 0;}
+            to {margin-top: -60px;}
+        }
+        @keyframes navdown{
+            from {margin-top: -60px;}
+            to {margin-top: 0;}
+        }
     </style>
 </head>
 <body>
@@ -151,6 +159,24 @@
             });
 
         });
+        window.onload = function(){
+            var nav = document.getElementById('nav');
+            window.onmousewheel = function(e){
+                e = e||event;
+                if (e.wheelDelta){
+                    if(e.wheelDelta<0){
+                        nav.style.animation="navup 1s";
+                        nav.style.marginTop="-60px";
+                    }
+                    if(e.wheelDelta>0){
+                        if(parseInt(nav.style.marginTop)<0){
+                            nav.style.animation="navdown 1s";
+                            nav.style.marginTop="0";
+                        }
+                    }
+                }
+            }
+        }
     </script>
 </body>
 </html>

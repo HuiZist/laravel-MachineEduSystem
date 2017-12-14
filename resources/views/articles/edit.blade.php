@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('css')
+<style type="text/css">
+</style>
+@endsection
 @section('content')
     <div class="container articles-create">
         <div class="row">

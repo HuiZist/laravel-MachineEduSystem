@@ -62,22 +62,22 @@
                 <ul class="list-unstyled" style="">
                     <li>
                         <span style="font-size: 36px;font-weight: bold;">{{ $user->name }}</span>
-                        &emsp;/&emsp;
+                        &ensp;/&ensp;
                         <i class="fa fa-home"></i><span> {{ $userinfo->live }}</span></li>
                     <li>
                         <i class="fa fa-mobile">&ensp;{{ $userinfo->phone }}
                         </i>
-                        &emsp;/&emsp;
-                        <i class="fa fa-comment"> {{ $userinfo->webchat }}
+                        &ensp;/&ensp;
+                        <i class="fa fa-comment">&ensp;{{ $userinfo->webchat }}
                         </i>
                     </li>
                     <li>
                         <a target="_blank" href="{{ $userinfo->blog }}" title="{{ $userinfo->blog }}">
-                            <i class="fa fa-link"> 博客</i>
+                            <i class="fa fa-external-link">&ensp;Blog</i>
                         </a>
-                        &emsp;/&emsp;
+                        &ensp;/&ensp;
                         <a target="_blank" href="{{ $userinfo->github }}" title="{{ $userinfo->github }}">
-                            <i class="fa fa-github"> GitHub</i>
+                            <i class="fa fa-github">&ensp;GitHub</i>
                         </a>
                     </li>
                 </ul>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -48,6 +48,11 @@
                             <li>
                                 <a href="{{ url('home') }}">个人主页</a>
                             </li>
+                            @can('memberShow')
+                            <li>
+                                <a href="{{ url('/manage/memberShow') }}">管理</a>
+                            </li>
+                            @endcan
                             <li>
                                 <a href="{{ route('setting') }}">设置</a>
                             </li>

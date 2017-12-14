@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('css')
 <style>
-.articles-index .btn-nav{
-    margin: 10px;
-    text-align: right;
-}
 .articles-index .dropdown-menu{
     background: #636b6f;
     min-width: 89px;
@@ -196,4 +192,8 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script type="text/javascript">
+</script>
 @endsection

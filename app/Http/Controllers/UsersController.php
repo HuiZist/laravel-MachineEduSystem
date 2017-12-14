@@ -65,4 +65,12 @@ class UsersController extends Controller
         Auth::user()->update(['name'=>$request->get('name'),]);
         return $this->setting();
     }
+
+    public function memberShow()
+    {
+        $this->authorize('memberShow');
+        $users = User::orderBy('updated_at','desc')->paginate(10);
+        return view('manage.memberShow',compact('users'));
+        
+    }
 }
