@@ -24,8 +24,8 @@
 	color: #fff;
 	text-align: center;
 }
-.userManage .manageMember .table{
-
+.userManage .manageMember table td{
+	line-height: 50px;
 }
 </style>
 @endsection
@@ -33,7 +33,7 @@
 <div class="userManage">
 	<div class="container manageBody">
 		<div class="btn-group-vertical manageSider">
-			<a class="btn btn-default" href="#">成员管理</a>
+			<a class="btn btn-default" href="{{ route('manage.memberShow') }}">成员管理</a>
 			<a class="btn btn-default" href="#">网站信息</a>
 			<a class="btn btn-default" href="#">全局消息</a>
 			<a class="btn btn-default" href="#">...</a>
@@ -44,7 +44,7 @@
 	  		<!-- Table -->
   			<table class="table">
 	  			<thead>
-	  				<th>#id</th><th>用户名</th><th>邮箱</th><th>激活</th><th>权限</th><th>创建时间</th><th>更改时间</th>
+	  				<th>#id</th><th>用户名</th><th>邮箱</th><th>激活</th><th>创建时间</th><th>更改时间</th><th>权限</th><th>操作</th>
 	  			</thead>
   				<tbody>
   				@foreach($users as $user)
@@ -53,15 +53,18 @@
 						<td>{{ $user->name }}</td>
 						<td>{{ $user->email }}</td>
 						<td>{{ $user->is_active }}</td>
-						@if($user->is_admin===2)
-							<td>SupManager</td>
-						@elseif($user->is_admin===1)
-							<td>Manager</td>
-						@else
-							<td>Member</td>
-						@endif
 						<td>{{ $user->created_at }}</td>
 						<td>{{ $user->updated_at }}</td>
+						@if($user->is_admin===2)
+							<td>SupManager</td>
+							<td>###</td>
+						@elseif($user->is_admin===1)
+							<td>Manager</td>
+							<td><a class="btn btn-default" href="{{ route('manage.memberAuthorize',['memberId'=>$user->id,'admValue'=>0]) }}">ToMember</a></td>
+						@else
+							<td>Member</td>
+							<td><a class="btn btn-default" href="{{ route('manage.memberAuthorize',['memberId'=>$user->id,'admValue'=>1]) }}">ToManage</a></td>
+						@endif
 					</tr>
 				@endforeach
 				</tbody>

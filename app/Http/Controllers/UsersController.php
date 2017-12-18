@@ -69,8 +69,14 @@ class UsersController extends Controller
     public function memberShow()
     {
         $this->authorize('memberShow');
-        $users = User::orderBy('updated_at','desc')->paginate(10);
+        $users = User::orderBy('updated_at','desc')->paginate(20);
         return view('manage.memberShow',compact('users'));
         
+    }
+    public function memberAuthorize($memberId,$admValue)
+    {
+        $this->authorize('memberShow');
+        User::where('id',$memberId)->update(['is_admin'=>$admValue,]);
+        return redirect()->route('manage.memberShow');
     }
 }

@@ -55,3 +55,4 @@ Route::group(['middleware'=>'auth'],function(){
 
 Route::get('/topic/{topicId}','TopicsController@show');
 Route::get('/manage/memberShow','UsersController@memberShow')->name('manage.memberShow');
+Route::get('/manage/memberShow/{memberId}/{admValue}','UsersController@memberAuthorize')->name('manage.memberAuthorize');
